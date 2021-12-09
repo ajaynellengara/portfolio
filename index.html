@@ -76,7 +76,7 @@
         <span></span>
         <span></span>
       </div>
-      <p> Sound </p>
+      <p> Music </p>
     </a>
 
     <div class="sidenav-footer">
@@ -523,13 +523,13 @@
       /* -----------------------------------
             2. Sound Setup
       ----------------------------------- */
-      $('body').append('<audio loop autoplay volume="1" id="audio-player"><source src="music.mp3" type="audio/mpeg"></audio>');
+      $('body').append('<audio loop autoplay volume="1" id="audio-player"><source src="assets/music/music.mp3" type="audio/mpeg"></audio>');
       var audio = document.getElementById("audio-player");
-      audio.volume = 0.2;
+      audio.volume = 0.1;
 
       if ($(window).length) {
         $('.music-bg').css({ 'visibility': 'visible' });
-        $('body').addClass("audio-on");
+        $('body').addClass("audio-off");
         if ($('body').hasClass('audio-off')) {
           $('body').removeClass('audio-on');
         }
