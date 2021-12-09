@@ -26,6 +26,7 @@ body,
 html {
   height: 100%;
   -moz-osx-font-smoothing: grayscale;
+  scroll-behavior: smooth;
 }
 a,
 a:active,
@@ -1083,7 +1084,9 @@ img {
 .sidebar-nav.bootsnav.active {
   left: 0;
 }
-
+.bootsnav .nav-toggler.add-bg {
+  background-color: #24272a;
+}
 .bootsnav .nav-toggler {
   position: absolute;
   top: 0;
@@ -1091,29 +1094,27 @@ img {
   height: 100px;
   width: 100px;
   text-align: center;
-  background-color: #24272a;
   border-radius: 0 0 100% 0;
   cursor: pointer;
+  -webkit-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+  -webkit-transition: background-color 0ms linear;
+  -ms-transition: background-color 0ms linear;
+  transition: background-color 0ms linear;
 }
-
 .nav-toggler .toggle-btn {
   position: relative;
   display: block;
   background: none;
-  width: 32px;
+  width: 30px;
   height: 20px;
   margin: 24px;
   cursor: pointer;
 }
-
 .nav-toggler .toggle-btn.active {
-  -webkit-transform: rotate(90deg) scaleX(0.6);
-  -ms-transform: rotate(90deg) scaleX(0.6);
-  -o-transform: rotate(90deg) scaleX(0.6);
-  -moz-transform: rotate(90deg) scaleX(0.6);
-  transform: rotate(90deg) scaleX(0.6);
+  width: 20px;
 }
-
 .nav-toggler .toggle-btn .bar {
   position: relative;
   display: block;
@@ -1127,7 +1128,6 @@ img {
   -ms-transition: all 500ms ease;
   -o-transition: all 500ms ease;
 }
-
 .nav-toggler .toggle-btn .bar:first-child {
   -webkit-transform-origin: right top;
   -ms-transform-origin: right top;
@@ -1135,27 +1135,23 @@ img {
   -o-transform-origin: right top;
   transform-origin: right top;
 }
-
 .nav-toggler .toggle-btn.active .bar:nth-child(2) {
   opacity: 0;
 }
-
 .nav-toggler .toggle-btn.active .bar:first-child {
-  -webkit-transform: rotate(-30deg);
-  -ms-transform: rotate(-30deg);
-  -o-transform: rotate(-30deg);
-  -moz-transform: rotate(-30deg);
-  transform: rotate(-30deg);
+  -webkit-transform: translateY(-5px) rotate(-45deg);
+  -ms-transform: translateY(-5px) rotate(-45deg);
+  -o-transform: translateY(-5px) rotate(-45deg);
+  -moz-transform: translateY(-5px) rotate(-45deg);
+  transform: translateY(-5px) rotate(-45deg);
 }
-
 .nav-toggler .toggle-btn.active .bar:last-child {
-  -webkit-transform: rotate(30deg);
-  -ms-transform: rotate(30deg);
-  -o-transform: rotate(30deg);
-  -moz-transform: rotate(30deg);
-  transform: rotate(30deg);
+  -webkit-transform: translateY(5px) rotate(45deg);
+  -ms-transform: translateY(5px) rotate(45deg);
+  -o-transform: translateY(5px) rotate(45deg);
+  -moz-transform: translateY(5px) rotate(45deg);
+  transform: translateY(5px) rotate(45deg);
 }
-
 .nav-toggler .toggle-btn .bar:last-child {
   margin-bottom: 0px;
   -webkit-transform-origin: right bottom;
@@ -1165,9 +1161,27 @@ img {
   transform-origin: right bottom;
 }
 
-.bootsnav .toggle-btn span {
-  margin: 0;
-  margin: 0 auto;
+.bootsnav.active .nav-toggler {
+  right: 0;
+  text-align: left;
+}
+.bootsnav .nav-toggler .toggle-btn .bar {
+  background-color: #fff;
+}
+.bootsnav.active .nav-toggler .toggle-btn .bar {
+  background-color: #000;
+}
+.nav-toggler .toggle-btn {
+  margin: 24px 18px;
+}
+.nav-toggler .toggle-btn.active {
+  margin: 16px 60px;
+}
+.bootsnav.active .nav-toggler.add-bg {
+  background-color: transparent;
+}
+.bootsnav .nav-toggler.add-bg {
+  background-color: #24272a;
 }
 
 .sidebar-wrapper {
@@ -1196,7 +1210,7 @@ img {
 .navbar .navbar-left-sidebar > li > a {
   color: #626262;
   border-color: #ededed;
-  padding: 15px 0;
+  padding: 14px 0;
   display: block;
   font-size: 12px;
   text-transform: uppercase;
@@ -1357,7 +1371,7 @@ img {
   padding-bottom: 8px;
 }
 .icon-social-wrap a i {
-  margin: 0 6px;
+  margin: 0 4px;
   vertical-align: middle;
   color: #6f6f6f;
 }
@@ -1425,6 +1439,7 @@ img {
   color: #fff;
   font-size: 14px;
   letter-spacing: 1px;
+  word-break: break-word;
 }
 .about-sec .box-stats {
   padding: 20px 30px 25px 40px;
@@ -1577,7 +1592,7 @@ h1 {
 
 h3 {
   color: #fff;
-  font-size: 28px;
+  font-size: 34px;
   font-weight: 600;
   text-transform: capitalize;
   letter-spacing: 1px;
@@ -1616,7 +1631,9 @@ p {
   font-size: 26px;
   text-align: center;
 }
-
+.custom-title h3 {
+  text-transform: uppercase;
+}
 .words-wrapper {
   display: inline-block;
   position: relative;
@@ -3097,6 +3114,7 @@ p {
 .qualification-sec .resume-box h5 {
   font-size: 18px;
   margin-bottom: 10px;
+  color: #fff;
 }
 
 .qualification-sec .resume-box p {
@@ -3107,8 +3125,8 @@ p {
 
 .qualification-sec .resume-box .place {
   opacity: 0.8;
-  font-weight: 600;
-  font-size: 15px;
+  font-weight: 500;
+  font-size: 14px;
   position: relative;
   padding-left: 26px;
 }
@@ -3124,6 +3142,12 @@ p {
   opacity: 0.8;
 }
 
+.work-sec {
+  align-items: center;
+  display: flex;
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
 .gallery {
   position: relative;
   overflow: hidden;
@@ -3176,11 +3200,87 @@ footer .patent-text {
 
 @media screen and (max-width: 1024px) {
   .sidebar-nav.bootsnav.active {
-    left: -290px;
+    right: -290px;
+    left: auto;
   }
   .sidebar-nav.bootsnav {
-    left: 0;
+    right: 0;
+    left: auto;
   }
+  .bootsnav.active .nav-toggler {
+    left: -100px;
+    right: auto;
+    border-radius: 0 0 0 100%;
+  }
+  .bootsnav .nav-toggler {
+    left: 0;
+    text-align: left;
+  }
+  .bootsnav .nav-toggler .toggle-btn .bar {
+    background-color: #000;
+  }
+  .bootsnav.active .nav-toggler .toggle-btn .bar {
+    background-color: #fff;
+  }
+  .bootsnav.active .nav-toggler.add-bg {
+    background-color: #24272a;
+  }
+  .bootsnav .nav-toggler.add-bg {
+    background-color: transparent;
+  }
+
+  .nav-toggler .toggle-btn.active {
+    width: 30px;
+    margin: 22px 46px;
+  }
+  .nav-toggler .toggle-btn.active .bar:nth-child(2) {
+    opacity: 1;
+  }
+  .nav-toggler .toggle-btn.active .bar:first-child {
+    -webkit-transform: none;
+    -ms-transform: none;
+    -o-transform: none;
+    -moz-transform: none;
+    transform: none;
+  }
+  .nav-toggler .toggle-btn.active .bar:last-child {
+    -webkit-transform: none;
+    -ms-transform: none;
+    -o-transform: none;
+    -moz-transform: none;
+    transform: none;
+  }
+  .nav-toggler .toggle-btn .bar:last-child {
+    margin-bottom: 0px;
+    -webkit-transform-origin: right bottom;
+    -ms-transform-origin: right bottom;
+    -moz-transform-origin: right bottom;
+    -o-transform-origin: right bottom;
+    transform-origin: right bottom;
+  }
+
+  .nav-toggler .toggle-btn {
+    width: 20px;
+    margin: 22px 8px;
+  }
+  .nav-toggler .toggle-btn .bar:nth-child(2) {
+    opacity: 0;
+  }
+  .nav-toggler .toggle-btn .bar:first-child {
+    -webkit-transform: translateY(-5px) rotate(-45deg);
+    -ms-transform: translateY(-5px) rotate(-45deg);
+    -o-transform: translateY(-5px) rotate(-45deg);
+    -moz-transform: translateY(-5px) rotate(-45deg);
+    transform: translateY(-5px) rotate(-45deg);
+  }
+  .nav-toggler .toggle-btn .bar:last-child {
+    -webkit-transform: translateY(5px) rotate(45deg);
+    -ms-transform: translateY(5px) rotate(45deg);
+    -o-transform: translateY(5px) rotate(45deg);
+    -moz-transform: translateY(5px) rotate(45deg);
+    transform: translateY(5px) rotate(45deg);
+  }
+
   .sidebar-wrapper {
     padding-left: 0;
   }
@@ -3263,12 +3363,15 @@ footer .patent-text {
   h1 {
     font-size: 46px;
   }
-  .character-wrap{
+  .character-wrap {
     right: 0;
     width: 100%;
   }
-  .big-guy{
+  .big-guy {
     width: 280px;
+  }
+  h3{
+    font-size: 24px;
   }
 }
 @media screen and (max-width: 475px) {
@@ -3277,15 +3380,15 @@ footer .patent-text {
     flex: 0 0 100%;
     max-width: 100%;
     text-align: center;
-}
-footer .patent-text {
-  text-align: center;
-  padding-top: 4px;
-  padding-bottom: 8px;
-}
-.icon-social-wrap {
-  text-align: center;
-  padding-top: 8px;
-  padding-bottom: 4px;
-}
+  }
+  footer .patent-text {
+    text-align: center;
+    padding-top: 4px;
+    padding-bottom: 8px;
+  }
+  .icon-social-wrap {
+    text-align: center;
+    padding-top: 8px;
+    padding-bottom: 4px;
+  }
 }
